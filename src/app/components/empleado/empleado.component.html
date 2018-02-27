@@ -1,0 +1,67 @@
+<h1>Empleado</h1>
+<h3>name</h3>
+<hr>
+<div class="row">
+<div class="col-md-6">
+    <div class="row">
+        <form (ngSubmit)="guardar()" #forma="ngForm">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input [(ngModel)]="empleado.nombre" 
+                    name="nombre" type="text" class="form-control" placeholder="Nombre del empleado" required/>
+            </div>
+            <div class="form-group">
+                <label>Habilidades</label>
+                <select [(ngModel)]="empleado.skill" 
+                    name="skill" class="form-control">
+                    <option value="1">una</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Email</label>
+                <input [(ngModel)]="empleado.email" 
+                    name="email" type="text" class="form-control" placeholder="Correo electronico" />
+            </div>
+            <div class="form-group">
+                <label>Puesto</label>
+                <input [(ngModel)]="empleado.puesto" 
+                    name="puesto" type="text" class="form-control" placeholder="Puesto" />
+            </div>
+            <div class="form-group">
+                <label>Fecha Nacimiento</label>
+                <input [(ngModel)]="empleado.fecha_nacimiento" 
+                    name="fecha_nacimiento" type="text" class="form-control" placeholder="Fecha Nacimiento" />
+            </div>
+            <div class="form-group">
+                <label>Domicilio</label>
+                <input [(ngModel)]="empleado.domicilio" 
+                    name="domicilio" type="text" class="form-control" placeholder="Domicilio" />
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <button type="button" [routerLink]="['/empleados']" 
+                            class="btn btn-outline-error" name="button">Regresar</button>
+                    <button type="submit" [disabled]="!forma.valid" 
+                            class="btn btn-outline-primary" >Guardar</button>
+
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<div class="col-md-6">
+  <agm-map [latitude]="empleado.latitud" [longitude]="empleado.longitud" [zoom]="zoom">
+      <agm-marker [latitude]="empleado.latitud" [longitude]="empleado.longitud">
+          <agm-info-window>
+              <strong>{{empleado.nombre}}</strong>
+              <p>
+                {{empleado.domicilio}}
+              </p>
+          </agm-info-window>
+      </agm-marker>
+    
+  </agm-map>
+</div>
+
+</div>

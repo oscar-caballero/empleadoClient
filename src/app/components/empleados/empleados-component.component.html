@@ -1,0 +1,46 @@
+<h1>Empleados</h1>
+<hr>
+<div class="row">
+    <div class="col-md-12 text-right">
+        <button type="button" [routerLink]="['/empleado','new']" 
+                class="btn btn-outline-primary" name="button">Crear nuevo empleado</button>
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Puesto</th>
+                        <th scope="col">Fecha Nacimiento</th>
+                        <th scope="col">Domicilio</th>
+                        <th scope="col">Skill</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr *ngFor ="let k of empleados | llaves ; let i = index">
+                        <th scope="row">{{ i +1 }}</th>
+                        <td>{{empleados[k].nombre}}</td>
+                        <td>{{empleados[k].email}}</td>
+                        <td>{{empleados[k].puesto}}</td>
+                        <td>{{empleados[k].fecha_nacimiento}}</td>
+                        <td>{{empleados[k].domicilio}}</td>
+                        <td>{{empleados[k].skill}}</td>
+                        <td>
+                            <button [routerLink]= "['/empleado',empleados[k].id]" class="btn btn-outline-success" type="button">Editar</button>
+                            <button (click)="borraEmpleado(empleados[k].id,k)" class="btn btn-outline-danger" type="button">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
